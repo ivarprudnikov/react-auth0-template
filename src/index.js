@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from "./react-auth0-spa";
 import history from "./utils/history";
+import packageJson from '../package.json';
 
 // A function that routes the user to the right place
 // after login
@@ -16,9 +17,11 @@ const onRedirectCallback = appState => {
   );
 };
 
+const callbackUri = process.env.NODE_ENV === 'production' ? packageJson.homepage : window.location.origin;
+
 ReactDOM.render(
   <Auth0Provider
-    redirect_uri={window.location.origin}
+    redirect_uri={callbackUri}
     onRedirectCallback={onRedirectCallback}
   >
     <App />
