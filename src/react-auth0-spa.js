@@ -1,28 +1,42 @@
-import React, { useState, useEffect, useContext } from "react";
-import createAuth0Client from "@auth0/auth0-spa-js";
+import React, { useContext, useEffect, useState } from 'react';
+import jwt_decode from 'jwt-decode';
+import createAuth0Client from '@auth0/auth0-spa-js';
+import config from './auth_config';
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
 
-export const Auth0Context = React.createContext();
+export const Auth0Context = React.createContext({});
 export const useAuth0 = () => useContext(Auth0Context);
 export const Auth0Provider = ({
   children,
-  onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
-  ...initOptions
+  redirect_uri,
+  onRedirectCallback
 }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState();
-  const [user, setUser] = useState();
-  const [auth0Client, setAuth0] = useState();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [auth0Client, setAuth0] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [popupOpen, setPopupOpen] = useState(false);
 
+  if (typeof onRedirectCallback !== 'function') {
+    onRedirectCallback = DEFAULT_REDIRECT_CALLBACK;
+  }
+
+  /**
+   * Should run only once as options do not change
+   */
   useEffect(() => {
     const initAuth0 = async () => {
-      const auth0FromHook = await createAuth0Client(initOptions);
+
+      const auth0FromHook = await createAuth0Client({
+        domain: config.domain,
+        client_id: config.clientId,
+        scope: config.scope,
+        redirect_uri: redirect_uri
+      });
       setAuth0(auth0FromHook);
 
-      if (window.location.search.includes("code=")) {
+      if (window.location.search.includes('code=')) {
         const { appState } = await auth0FromHook.handleRedirectCallback();
         onRedirectCallback(appState);
       }
@@ -38,23 +52,14 @@ export const Auth0Provider = ({
 
       setLoading(false);
     };
-    initAuth0();
-    // eslint-disable-next-line
-  }, []);
 
-  const loginWithPopup = async (params = {}) => {
-    setPopupOpen(true);
-    try {
-      await auth0Client.loginWithPopup(params);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setPopupOpen(false);
-    }
-    const user = await auth0Client.getUser();
-    setUser(user);
-    setIsAuthenticated(true);
-  };
+    initAuth0()
+      .catch((e) => {
+        console.error('initAuth0 failure', e);
+        window.location.replace('/');
+      });
+
+  }, [redirect_uri, onRedirectCallback]);
 
   const handleRedirectCallback = async () => {
     setLoading(true);
@@ -64,18 +69,29 @@ export const Auth0Provider = ({
     setIsAuthenticated(true);
     setUser(user);
   };
+
+  const getTokenSilently = async () => {
+    const accessToken = await auth0Client.getTokenSilently();
+    return { raw: accessToken, decoded: jwt_decode(accessToken) };
+  };
+
+  const hasAnyScopeAsync = async (scopes) => {
+    const token = await getTokenSilently();
+    const tokenScopes = (token.decoded.scope || '').split(/\W/);
+    return scopes && scopes.length && scopes.some(s => tokenScopes.indexOf(s) > -1);
+  };
+
   return (
     <Auth0Context.Provider
       value={{
         isAuthenticated,
         user,
         loading,
-        popupOpen,
-        loginWithPopup,
         handleRedirectCallback,
         getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
         loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
-        getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
+        getTokenSilently,
+        hasAnyScopeAsync,
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
         logout: (...p) => auth0Client.logout(...p)
       }}

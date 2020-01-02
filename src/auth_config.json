@@ -1,4 +1,5 @@
 {
   "domain": "ivarprudnikov.eu.auth0.com",
-  "clientId": "EuHrJlslqdI6h5UOuAMtau6maPa05lRd"
+  "clientId": "EuHrJlslqdI6h5UOuAMtau6maPa05lRd",
+  "scope": "openid profile email"
 }
