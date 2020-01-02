@@ -1,7 +1,8 @@
 {
   "name": "test-auth0-react-login",
   "version": "0.1.0",
-  "private": true,
+  "homepage":"https://ivarprudnikov.github.io/react-auth0-template",
+  "private": false,
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.6.0",
     "@testing-library/jest-dom": "^4.2.4",
