@@ -16,6 +16,9 @@ function App() {
           <Route path="/" exact />
           <PrivateRoute path="/profile" component={Profile} />
         </Switch>
+        <footer>
+          <small>Version: {window.REACT_APP_VERSION}</small>
+        </footer>
       </Router>
     </div>
   );
