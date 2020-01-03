@@ -3,7 +3,7 @@ import { useAuth0 } from "../react-auth0-spa";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logoutWithRedirect } = useAuth0();
 
   return (
     <div>
@@ -11,7 +11,7 @@ const NavBar = () => {
         <button onClick={() => loginWithRedirect({})}>Log in</button>
       )}
 
-      {isAuthenticated && <button onClick={() => logout()}>Log out</button>}
+      {isAuthenticated && <button onClick={() => logoutWithRedirect()}>Log out</button>}
 
       {isAuthenticated && (
         <span>

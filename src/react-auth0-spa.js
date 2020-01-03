@@ -10,7 +10,6 @@ export const Auth0Context = React.createContext({});
 export const useAuth0 = () => useContext(Auth0Context);
 export const Auth0Provider = ({
   children,
-  redirect_uri,
   onRedirectCallback
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -32,7 +31,7 @@ export const Auth0Provider = ({
         domain: config.domain,
         client_id: config.clientId,
         scope: config.scope,
-        redirect_uri: redirect_uri
+        redirect_uri: config.loginCallbackUrl
       });
       setAuth0(auth0FromHook);
 
@@ -59,7 +58,7 @@ export const Auth0Provider = ({
         window.location.replace('/');
       });
 
-  }, [redirect_uri, onRedirectCallback]);
+  }, [onRedirectCallback]);
 
   const handleRedirectCallback = async () => {
     setLoading(true);
@@ -81,6 +80,10 @@ export const Auth0Provider = ({
     return scopes && scopes.length && scopes.some(s => tokenScopes.indexOf(s) > -1);
   };
 
+  const logoutWithRedirect = () => auth0Client.logout({
+    returnTo: config.logoutRedirectUrl
+  });
+
   return (
     <Auth0Context.Provider
       value={{
@@ -93,7 +96,7 @@ export const Auth0Provider = ({
         getTokenSilently,
         hasAnyScopeAsync,
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
-        logout: (...p) => auth0Client.logout(...p)
+        logoutWithRedirect
       }}
     >
       {children}
