@@ -7,16 +7,18 @@ import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <div className="App">
+    <div className="d-flex min-vh-100 flex-column justify-content-between">
       <Router history={history}>
         <header>
           <NavBar />
         </header>
-        <Switch>
-          <Route path="/" exact />
-          <PrivateRoute path="/profile" component={Profile} />
-        </Switch>
-        <footer>
+        <main>
+          <Switch>
+            <Route path="/" exact />
+            <PrivateRoute path="/profile" component={Profile} />
+          </Switch>
+        </main>
+        <footer className="p-4 text-center bg-primary text-light">
           <small>Version: {window.REACT_APP_VERSION}</small>
         </footer>
       </Router>
