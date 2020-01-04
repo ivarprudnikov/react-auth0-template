@@ -9,7 +9,7 @@ import Home from './components/Home';
 function App() {
   return (
     <div className="d-flex min-vh-100 flex-column justify-content-between">
-      <Router history={history}>
+      <Router history={history} basename={process.env.PUBLIC_URL + '/'}>
         <header>
           <NavBar />
         </header>
