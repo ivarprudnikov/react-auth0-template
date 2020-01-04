@@ -9,14 +9,14 @@ import Home from './components/Home';
 function App() {
   return (
     <div className="d-flex min-vh-100 flex-column justify-content-between">
-      <Router history={history} basename={process.env.PUBLIC_URL + '/'}>
+      <Router history={history}>
         <header>
           <NavBar />
         </header>
         <main>
           <Switch>
-            <Route path="/" exact component={Home}/>
-            <PrivateRoute path="/profile" component={Profile} />
+            <Route path={process.env.PUBLIC_URL + "/"} exact component={Home}/>
+            <PrivateRoute path={process.env.PUBLIC_URL + "/profile"} component={Profile} />
           </Switch>
         </main>
         <footer className="p-4 text-center bg-primary text-light">

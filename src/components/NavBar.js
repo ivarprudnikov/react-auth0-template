@@ -7,7 +7,7 @@ const NavBar = () => {
 
   return (<nav className="navbar navbar-expand navbar-light bg-light">
     <div className="container">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand" to={process.env.PUBLIC_URL + "/"}>
         Brnd
       </Link>
       <ul className="navbar-nav mr-auto">
@@ -25,10 +25,10 @@ const NavBar = () => {
       {isAuthenticated && (<>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to={process.env.PUBLIC_URL + "/"}>Home</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/profile">Profile</Link>
+            <Link className="nav-link" to={process.env.PUBLIC_URL + "/profile"}>Profile</Link>
           </li>
         </ul>
         <form className="form-inline ml-4">
