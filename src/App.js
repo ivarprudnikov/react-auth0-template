@@ -20,7 +20,14 @@ function App() {
           </Switch>
         </main>
         <footer className="p-4 text-center bg-primary text-light">
-          <small>Version: {window.REACT_APP_VERSION}</small>
+          <div className="container">
+            <div className="d-flex justify-content-between align-items-center">
+              <small>Version: {window.REACT_APP_VERSION}</small>
+              <span className="mx-auto"></span>
+              <a href="https://github.com/ivarprudnikov/react-auth0-template" className="btn btn-sm btn-outline-light mr-3">Source code on Github</a>
+              <a href="https://www.ivarprudnikov.com/auth0-authentication-website-react/" className="btn btn-sm btn-outline-light">About this implementation</a>
+            </div>
+          </div>
         </footer>
       </Router>
     </div>
