@@ -12,4 +12,4 @@ React website with Auth0 login
 
 - Project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 - Added Auth0 steps steps from [auth0.com/docs/quickstart/spa/react](https://auth0.com/docs/quickstart/spa/react)
-- Further enhancements applied as documented in [blog post](TODO)
+- Further enhancements applied as documented in [blog post](https://www.ivarprudnikov.com/auth0-authentication-website-react/) or visible in [code changes](https://github.com/ivarprudnikov/react-auth0-template/compare/50b1cd7f523dc112208b83f021c0c4113db32b00...master)
