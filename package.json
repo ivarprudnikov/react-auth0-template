@@ -4,17 +4,17 @@
   "homepage": "https://ivarprudnikov.github.io/react-auth0-template",
   "private": false,
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.6.0",
-    "@testing-library/jest-dom": "^4.2.4",
+    "@auth0/auth0-spa-js": "^1.6.4",
+    "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
-    "@testing-library/user-event": "^7.2.1",
+    "@testing-library/user-event": "^8.1.0",
     "bootstrap": "^4.4.1",
     "jwt-decode": "^2.2.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.1"
   },
   "scripts": {
     "start": "REACT_APP_VERSION=$(date \"+%Y-%m-%d %H:%M\") react-scripts start",
