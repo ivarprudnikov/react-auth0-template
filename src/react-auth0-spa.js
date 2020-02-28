@@ -30,6 +30,7 @@ export const Auth0Provider = ({
       const auth0FromHook = await createAuth0Client({
         domain: config.domain,
         client_id: config.clientId,
+        audience: config.audience,
         scope: config.scope,
         redirect_uri: config.loginCallbackUrl
       });
@@ -70,13 +71,34 @@ export const Auth0Provider = ({
   };
 
   const getTokenSilently = async () => {
-    const accessToken = await auth0Client.getTokenSilently();
-    return { raw: accessToken, decoded: jwt_decode(accessToken) };
+    let accessToken;
+    try {
+      accessToken = await auth0Client.getTokenSilently();
+    } catch (e) {
+      console.log(e);
+      throw new Error("Could not obtain access token");
+    }
+    try {
+      return { raw: accessToken, decoded: jwt_decode(accessToken) };
+    } catch (e) {
+      console.log(e);
+      throw new Error("Could not decode access token");
+    }
+  };
+
+  const getTokenScopesAsync = async () => {
+    let token;
+    try {
+      token = await getTokenSilently();
+    } catch (e) {
+      return [];
+    }
+    const scopeString = (token.decoded.scope || '') + '';
+    return scopeString.split(/\W/);
   };
 
   const hasAnyScopeAsync = async (scopes) => {
-    const token = await getTokenSilently();
-    const tokenScopes = (token.decoded.scope || '').split(/\W/);
+    const tokenScopes = await getTokenScopesAsync();
     return scopes && scopes.length && scopes.some(s => tokenScopes.indexOf(s) > -1);
   };
 

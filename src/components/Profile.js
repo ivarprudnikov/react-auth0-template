@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { useAuth0 } from "../react-auth0-spa";
+import axios from 'axios';
 
 const Profile = () => {
   const { loading, user } = useAuth0();
+  const [apiUser, setApiUser] = useState({});
+
+  useEffect(() => {
+    if (!loading && user) {
+      axios.get('/me')
+        .then(response => setApiUser(response.data))
+        .catch(() => {
+          setApiUser({});
+        });
+    }
+  }, [loading, user]);
 
   if (loading || !user) {
-    return <div>Loading...</div>;
+    return <div className="d-flex min-vh-100 align-items-center justify-content-center">
+      <span className="spinner-border" aria-label="Loading ..." />
+    </div>;
   }
 
   return (
@@ -19,7 +33,8 @@ const Profile = () => {
           <p>{user.email}</p>
         </div>
         <div className="col-sm-6">
-          <code className="p-3 bg-dark text-light d-block">{JSON.stringify(user, null, 2)}</code>
+          <code className="p-3 bg-dark text-light d-block mb-3">{JSON.stringify(user, null, 2)}</code>
+          <pre className="p-3 bg-dark text-light d-block">{JSON.stringify(apiUser, null, 2)}</pre>
         </div>
       </div>
     </div>
