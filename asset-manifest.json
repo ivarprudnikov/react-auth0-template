@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/react-auth0-template/static/css/main.424558bd.chunk.css",
-    "main.js": "/react-auth0-template/static/js/main.1483e400.chunk.js",
-    "main.js.map": "/react-auth0-template/static/js/main.1483e400.chunk.js.map",
+    "main.js": "/react-auth0-template/static/js/main.b7d17e54.chunk.js",
+    "main.js.map": "/react-auth0-template/static/js/main.b7d17e54.chunk.js.map",
     "runtime-main.js": "/react-auth0-template/static/js/runtime-main.3d0ac1b6.js",
     "runtime-main.js.map": "/react-auth0-template/static/js/runtime-main.3d0ac1b6.js.map",
-    "static/js/2.74f417ff.chunk.js": "/react-auth0-template/static/js/2.74f417ff.chunk.js",
-    "static/js/2.74f417ff.chunk.js.map": "/react-auth0-template/static/js/2.74f417ff.chunk.js.map",
+    "static/js/2.63912252.chunk.js": "/react-auth0-template/static/js/2.63912252.chunk.js",
+    "static/js/2.63912252.chunk.js.map": "/react-auth0-template/static/js/2.63912252.chunk.js.map",
     "index.html": "/react-auth0-template/index.html",
-    "precache-manifest.714f359e74ed888ed633ad15f7f1e213.js": "/react-auth0-template/precache-manifest.714f359e74ed888ed633ad15f7f1e213.js",
+    "precache-manifest.b3fc7126fb2b4e18d96cee0617816d40.js": "/react-auth0-template/precache-manifest.b3fc7126fb2b4e18d96cee0617816d40.js",
     "service-worker.js": "/react-auth0-template/service-worker.js",
     "static/css/main.424558bd.chunk.css.map": "/react-auth0-template/static/css/main.424558bd.chunk.css.map",
-    "static/js/2.74f417ff.chunk.js.LICENSE.txt": "/react-auth0-template/static/js/2.74f417ff.chunk.js.LICENSE.txt"
+    "static/js/2.63912252.chunk.js.LICENSE.txt": "/react-auth0-template/static/js/2.63912252.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3d0ac1b6.js",
-    "static/js/2.74f417ff.chunk.js",
+    "static/js/2.63912252.chunk.js",
     "static/css/main.424558bd.chunk.css",
-    "static/js/main.1483e400.chunk.js"
+    "static/js/main.b7d17e54.chunk.js"
   ]
 }
