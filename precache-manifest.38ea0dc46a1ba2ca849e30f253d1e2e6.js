@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "53067ed8402be8a9c61caa8cdb40db61",
+    "revision": "662f38e46eea556b882c0b6316220a26",
     "url": "/react-auth0-template/index.html"
   },
   {
