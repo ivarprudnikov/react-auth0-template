@@ -1,7 +1,7 @@
 React website with Auth0 login
 ================================
 
-[![Build Status](https://travis-ci.org/ivarprudnikov/react-auth0-template.svg?branch=master)](https://travis-ci.org/ivarprudnikov/react-auth0-template)
+[![Build Status](https://travis-ci.com/ivarprudnikov/react-auth0-template.svg?branch=master)](https://travis-ci.com/ivarprudnikov/react-auth0-template)
 [![GitHub issues](https://img.shields.io/github/issues/ivarprudnikov/react-auth0-template.svg)](https://github.com/ivarprudnikov/react-auth0-template/issues)
 [![GitHub last commit](https://img.shields.io/github/last-commit/ivarprudnikov/react-auth0-template.svg)](https://github.com/ivarprudnikov/react-auth0-template/commits/master)
 
