@@ -4,7 +4,7 @@
   "homepage": "https://ivarprudnikov.github.io/react-auth0-template",
   "private": false,
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.10.0",
+    "@auth0/auth0-spa-js": "^1.11.0",
     "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^10.4.5",
     "@testing-library/user-event": "^12.0.11",
