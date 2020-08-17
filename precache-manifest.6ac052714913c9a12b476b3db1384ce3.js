@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eba498b85f26e572808df33f390f29f0",
+    "revision": "54c66ffa694cb18f5e2ccb5f411a4b7c",
     "url": "/react-auth0-template/index.html"
   },
   {
-    "revision": "4d65eeb5e5fbf4e3bb7c",
+    "revision": "0721ce634121fb657a45",
     "url": "/react-auth0-template/static/css/main.f3a3e9f9.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-auth0-template/static/js/2.40631029.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4d65eeb5e5fbf4e3bb7c",
-    "url": "/react-auth0-template/static/js/main.ed2d7e3e.chunk.js"
+    "revision": "0721ce634121fb657a45",
+    "url": "/react-auth0-template/static/js/main.194d8ccd.chunk.js"
   },
   {
     "revision": "485b74a6a93b112b07e7",
